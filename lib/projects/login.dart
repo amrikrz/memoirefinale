@@ -30,11 +30,11 @@ class _LoginPageState extends State<LoginPage> {
       _isLoading = true;
     });
     if (_formkey.currentState!.validate()) {
-      email = emailController.text; // Retrieve email from the controller
+      email = emailController.text; 
       password =
-          passwordController.text; // Retrieve password from the controller
+          passwordController.text;
       String res = await _authController.loginUsers(
-          email, password); // Pass email and password to loginUsers
+          email, password); 
 
       if (res == 'succès') {
         return Navigator.pushReplacement(context,

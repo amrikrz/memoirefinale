@@ -41,22 +41,20 @@ class ProductProvider with ChangeNotifier {
   final List<ProductModel> _products = [
     // Phones
     ProductModel(
-      //1
-        
-        productId:'exerc1',
-      productTitle: "Exercice jambe",
-      productPrice: "600",
-      productCategory: "Jambe",
-      productDescription:
-      "Ce programme d'exercice jambe est créé par moi ,le coach -nom coach- travaille avec le-s- salle-s- de sport .il contient 15 exercices ",
-      productImage: "assets/images/ex1.jpg",
-      productCoachName: " Mansar A.",
-      productLevel: "Débutant",
-      productMaterial: "no material",
-      productQuntity: '10',
-      productTime: '5 min', 
-      productVideo: 'assets/videos/cat.mp4',
-    ),
+  productId: 'exerc1',
+  productTitle: "Exercice jambe",
+  productPrice: "600",
+  productCategory: "Jambe",
+  productDescription: "Ce programme d'exercice jambe est créé par moi, le coach -nom coach- travaille avec le-s- salle-s- de sport. Il contient 15 exercices",
+  productImage: "assets/videos/sport1.mp4",
+  productCoachName: "Mansar A.",
+  productLevel: "Débutant",
+  productMaterial: "no material",
+  
+  productTime: '5 min',
+  productVideo: 'assets/videos/sport1.mp4', productQuntity: '20', // Ensure productVideo is initialized
+),
+
     ProductModel(
       //2
 
@@ -67,56 +65,56 @@ class ProductProvider with ChangeNotifier {
       productCategory: "bras",
       productDescription:
           "6.1-inch Super Retina XDR display with ProMotion and always-on display. Dynamic Island, a new and magical way to interact with your iPhone. 48MP main camera for up to 4x higher resolution. Cinematic mode, now in 4K Dolby Vision up to 30 fps. Action mode, for stable and smooth videos when you're on the move. Accident detection, vital safety technology that calls for help for you. All-day battery life and up to 23 hours of video playback.",
-      productImage: "assets/images/ex1.jpg",
+      productImage: "assets/videos/sport1.mp4",
       productCoachName: " Mansar A.",
       productLevel: "Bigenner",
       productMaterial: "no material",
       
       productQuntity: '10',
       productTime: '9 min',
-      productVideo:"assets/videos/cat.mp4",
+      productVideo:"assets/videos/sport1.mp4",
     ),
     ProductModel(
       //3
 productId: 'exercice3',
-      productTitle: "Apple iPhone 14 Pro",
+      productTitle: "CURLER LES BICEPS",
       productPrice: "1399.99",
-      productCategory: "Phones",
+      productCategory: "bras",
       productDescription:
           "6.1-inch Super Retina XDR display with ProMotion and always-on display. Dynamic Island, a new and magical way to interact with your iPhone. 48MP main camera for up to 4x higher resolution. Cinematic mode, now in 4K Dolby Vision up to 30 fps. Action mode, for stable and smooth videos when you're on the move. Accident detection, vital safety technology that calls for help for you. All-day battery life and up to 23 hours of video playback.",
-      productImage: "assets/images/ex1.jpg",
+      productImage: "assets/videos/sport1.mp4",
       productCoachName: " Mansar A.",
       productLevel: "Bigenner",
       productMaterial: "no material",
       
       productQuntity: '10',
       productTime: '15 min',
-      productVideo: 'assets/videos/cat.mp4',
+      productVideo: 'assets/videos/sport1.mp4',
     ),
     ProductModel(
       //4
 productId: 'exercice4',
-      productTitle: "Apple iPhone 14 Pro",
+      productTitle: "CURLER LES BICEPS",
       productPrice: "1399.99",
       productCategory: "Phones",
       productDescription:
           "6.1-inch Super Retina XDR display with ProMotion and always-on display. Dynamic Island, a new and magical way to interact with your iPhone. 48MP main camera for up to 4x higher resolution. Cinematic mode, now in 4K Dolby Vision up to 30 fps. Action mode, for stable and smooth videos when you're on the move. Accident detection, vital safety technology that calls for help for you. All-day battery life and up to 23 hours of video playback.",
-      productImage: "assets/images/ex1.jpg",
+      productImage: "assets/videos/sport1.mp4",
       productCoachName: " Mansar A.",
       productLevel: "Bigenner",
       productMaterial: "no material",
       
       productQuntity: '10',
       productTime: '15 min',
-       productVideo: 'assets/videos/cat.mp4',
+       productVideo: 'assets/videos/sport1.mp4',
     ),
 
     ProductModel(
       //4
 productId: 'exercice5',
-      productTitle: "Apple iPhone 14 Pro",
+      productTitle: "CURLER LES BICEPS",
       productPrice: "1399.99",
-      productCategory: "Phones",
+        productCategory: "bras",
       productDescription:
           "6.1-inch Super Retina XDR display with ProMotion and always-on display. Dynamic Island, a new and magical way to interact with your iPhone. 48MP main camera for up to 4x higher resolution. Cinematic mode, now in 4K Dolby Vision up to 30 fps. Action mode, for stable and smooth videos when you're on the move. Accident detection, vital safety technology that calls for help for you. All-day battery life and up to 23 hours of video playback.",
       productImage: "assets/images/ex1.jpg",
@@ -126,15 +124,15 @@ productId: 'exercice5',
       
       productQuntity: '10',
       productTime: '15 min',
-       productVideo: 'assets/videos/cat.mp4',
+       productVideo: 'assets/videos/sport1.mp4',
     ),
 
     ProductModel(
       //4
 productId: 'exercice6',
-      productTitle: "Apple iPhone 14 Pro",
+      productTitle: "CURLER LES BICEPS",
       productPrice: "1399.99",
-      productCategory: "Phones",
+        productCategory: "bras",
       productDescription:
           "6.1-inch Super Retina XDR display with ProMotion and always-on display. Dynamic Island, a new and magical way to interact with your iPhone. 48MP main camera for up to 4x higher resolution. Cinematic mode, now in 4K Dolby Vision up to 30 fps. Action mode, for stable and smooth videos when you're on the move. Accident detection, vital safety technology that calls for help for you. All-day battery life and up to 23 hours of video playback.",
       productImage: "assets/images/ex1.jpg",
@@ -144,14 +142,14 @@ productId: 'exercice6',
       
       productQuntity: '10',
       productTime: '15 min',
-       productVideo: 'assets/videos/cat.mp4',
+       productVideo: 'assets/videos/sport1.mp4',
     ),
     ProductModel(
       //4
 productId: 'exercice7',
-      productTitle: "Apple iPhone 14 Pro",
+      productTitle: "CURLER LES BICEPS",
       productPrice: "1399.99",
-      productCategory: "Phones",
+      productCategory: "bras",
       productDescription:
           "6.1-inch Super Retina XDR display with ProMotion and always-on display. Dynamic Island, a new and magical way to interact with your iPhone. 48MP main camera for up to 4x higher resolution. Cinematic mode, now in 4K Dolby Vision up to 30 fps. Action mode, for stable and smooth videos when you're on the move. Accident detection, vital safety technology that calls for help for you. All-day battery life and up to 23 hours of video playback.",
       productImage: "assets/images/ex1.jpg",
@@ -161,14 +159,14 @@ productId: 'exercice7',
       
       productQuntity: '10',
       productTime: '15 min',
-       productVideo: 'assets/videos/cat.mp4',
+       productVideo: 'assets/videos/sport1.mp4',
     ),
       ProductModel(
       //4
 productId: 'exercice8',
-      productTitle: "Apple iPhone 14 Pro",
+      productTitle: "CURLER LES BICEPS",
       productPrice: "1399.99",
-      productCategory: "Phones",
+        productCategory: "bras",
       productDescription:
           "6.1-inch Super Retina XDR display with ProMotion and always-on display. Dynamic Island, a new and magical way to interact with your iPhone. 48MP main camera for up to 4x higher resolution. Cinematic mode, now in 4K Dolby Vision up to 30 fps. Action mode, for stable and smooth videos when you're on the move. Accident detection, vital safety technology that calls for help for you. All-day battery life and up to 23 hours of video playback.",
       productImage: "assets/images/ex1.jpg",
@@ -178,7 +176,7 @@ productId: 'exercice8',
       
       productQuntity: '10',
       productTime: '15 min',
-       productVideo: 'assets/videos/cat.mp4',
+       productVideo: 'assets/videos/sport1.mp4',
     ),
     
     

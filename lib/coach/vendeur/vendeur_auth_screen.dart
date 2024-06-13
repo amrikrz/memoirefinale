@@ -23,7 +23,6 @@ class VendorAuthScreen extends StatelessWidget {
               EmailAuthProvider(),
             ],
 
-            // Set text color for all text elements in SignInScreen (customizable)
           );
         }
 

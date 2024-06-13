@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class ProductModel {
   final String productId;
   final String productTitle;
@@ -8,11 +10,11 @@ class ProductModel {
   final String productCoachName;
   final String productLevel;
   final String productMaterial;
-  final String productQuntity;
+  final String productQuantity; // Corrected typo in field name
   final String productTime;
-  final String productVideo;
+  final String productVideo; // Define productVideo field
 
-  ProductModel( {
+  ProductModel({
     required this.productId,
     required this.productTitle,
     required this.productPrice,
@@ -22,8 +24,8 @@ class ProductModel {
     required this.productCoachName,
     required this.productLevel,
     required this.productMaterial,
-    required this.productQuntity,
+    required this.productQuantity,
     required this.productTime,
-    required this.productVideo,
+    required this.productVideo, // Include productVideo in constructor
   });
 }

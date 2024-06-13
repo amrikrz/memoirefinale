@@ -51,7 +51,7 @@ class OrderScreen extends StatelessWidget {
 
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(
-                child: CircularProgressIndicator(color: Colors.yellow.shade900),
+                child: CircularProgressIndicator(color: Colors.pink.shade200),
               );
             }
 

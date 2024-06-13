@@ -2,6 +2,7 @@ import 'package:card_swiper/card_swiper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sportapplication/screens_client/exercice/app_constants.dart';
+import 'package:sportapplication/screens_client/exercice/exercice1/exercice_ProductWidget.dart';
 import 'package:sportapplication/screens_client/homePage/dernieeArrivee/Responsable/derniee_arrive_responsable.dart';
 import 'package:sportapplication/screens_client/homePage/dernieeArrivee/entrainneur/derniere_arrivee_entraineur.dart';
 import 'package:sportapplication/screens_client/homePage/bannerScreen.dart';
@@ -20,9 +21,8 @@ class SportifHome2 extends StatelessWidget {
         child: Column(
           children: [
             UserAccountsDrawerHeader(
-              //background
-
               decoration: BoxDecoration(
+                color: Colors.transparent,
                 image: DecorationImage(
                   image: AssetImage("assets/images/backgroundcompte.jpg"),
                   fit: BoxFit.cover,
@@ -110,7 +110,9 @@ class SportifHome2 extends StatelessWidget {
                   onTap: () async {
                     await FirebaseAuth.instance.signOut();
                     Navigator.pushReplacementNamed(
-                        context, "/login_client",);
+                      context,
+                      "/login_client",
+                    );
                   },
                 ),
               ],
@@ -119,6 +121,8 @@ class SportifHome2 extends StatelessWidget {
         ),
       ),
       appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
         actions: [
           Row(
             children: [
@@ -176,8 +180,7 @@ class SportifHome2 extends StatelessWidget {
                 child: Swiper(
                   itemBuilder: (context, index) {
                     return Container(
-                    
-                  child:     PubliciteAccueil(),
+                      child: PubliciteAccueil(),
                     );
                   },
                   itemCount: AppConstants.bannersImages.length,
@@ -211,18 +214,11 @@ class SportifHome2 extends StatelessWidget {
                   color: gray,
                 ),
               ),
-              
-              
-                
               Container(
-              
                 height: 170,
-                  
-                child:  LastArrivalWidget(),
-                  
-                
+                child: LastArrivalWidget(),
               ),
-                SizedBox(
+              SizedBox(
                 height: 10,
               ),
               Text(
@@ -232,15 +228,10 @@ class SportifHome2 extends StatelessWidget {
                   color: gray,
                 ),
               ),
-                Container(
-              
+              Container(
                 height: 170,
-                  
-                child:  LastArrivalWidgetResponsable(),
-                  
-                
+                child: LastArrivalWidgetResponsable(),
               ),
-        
               Text(
                 'Categories',
                 style: TextStyle(
@@ -250,20 +241,11 @@ class SportifHome2 extends StatelessWidget {
               SizedBox(
                 height: 15,
               ),
-              GridView.count(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                crossAxisCount: 2,
-                children: 
-                  List.generate(AppConstants.bannersImages.length, (index) {
-                    return Text("Buttun");
-                  }),
-                
-              ),
+          
               SizedBox(
                 height: 5,
               ),
-          Text(
+              Text(
                 'Alimentations',
                 style: TextStyle(
                   fontSize: 22,
@@ -274,16 +256,15 @@ class SportifHome2 extends StatelessWidget {
               ),
               SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row(children: [
-                  
-                ],),
-              ),
+                child: Row(
+                  children: [
 
-        
+                    
+                  ],
+                ),
+              ),
             ],
-            
           ),
-          
         ),
       ),
     );

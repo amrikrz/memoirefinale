@@ -22,21 +22,7 @@ class _ProfileCoachScreenState extends State<ProfileCoachScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 2,
-        backgroundColor: Colors.amberAccent,
-        title: Text(
-          'Profile',
-          style: TextStyle(letterSpacing: 4),
-        ),
-        centerTitle: true,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(14.0),
-            child: Icon(Icons.star),
-          ),
-        ],
-      ),
+      
       body: Column(
         children: [
           SizedBox(
@@ -45,7 +31,7 @@ class _ProfileCoachScreenState extends State<ProfileCoachScreen> {
           Center(
             child: CircleAvatar(
               radius: 64,
-              backgroundColor: Colors.amberAccent,
+              backgroundColor: Colors.pink.shade200,
             ),
           ),
           Padding(
@@ -61,7 +47,7 @@ class _ProfileCoachScreenState extends State<ProfileCoachScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              "ikram@gmail.com",
+              "Entraineur@gmail.com",
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,

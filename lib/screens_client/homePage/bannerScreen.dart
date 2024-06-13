@@ -41,9 +41,10 @@ class _PubliciteAccueilState extends State<PubliciteAccueil> {
             return Image.network(imageUrl, fit: BoxFit.cover);
           },
           options: CarouselOptions(
+            autoPlayInterval: Duration(seconds: 5),
             initialPage: 0,
             autoPlay: true,
-            autoPlayInterval: Duration(seconds: 2),
+            
             height: 150,
             viewportFraction: 1.0,
             enlargeCenterPage: true,

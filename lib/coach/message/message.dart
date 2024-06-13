@@ -1,22 +1,20 @@
 
 
-
-
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 
-class ResponsableMessage extends StatefulWidget {
+class MessageScreen extends StatefulWidget {
   final String userId;
   final String userType; // 'sportif', 'entraineur', 'responsable'
 
-  ResponsableMessage({required this.userId, required this.userType});
+  MessageScreen({required this.userId, required this.userType});
 
   @override
   _ChatScreenState createState() => _ChatScreenState();
 }
 
-class _ChatScreenState extends State<ResponsableMessage> {
+class _ChatScreenState extends State<MessageScreen> {
   final TextEditingController _messageController = TextEditingController();
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final FirebaseStorage _storage = FirebaseStorage.instance;

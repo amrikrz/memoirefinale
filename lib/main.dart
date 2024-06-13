@@ -3,10 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
-import 'package:sportapplication/coach/screens_coach/edit/ajouter_client.dart';
-import 'package:sportapplication/coach/screens_coach/edit/edit_things_screen.dart';
-import 'package:sportapplication/coach/vendeur/vendeur_auth_screen.dart';
 import 'package:sportapplication/coach/RegisterApresSignup/EntraineurRegistreScreen.dart';
+import 'package:sportapplication/coach/screens_coach/creerProgramme/ajouterNouveauProgramme.dart';
+import 'package:sportapplication/coach/vendeur/vendeur_auth_screen.dart';
 import 'package:sportapplication/projects/home_client.dart';
 import 'package:sportapplication/projects/image3.dart';
 import 'package:sportapplication/projects/login.dart';
@@ -25,7 +24,6 @@ import 'package:sportapplication/screens_client/inner_screens/favorite_page.dart
 import 'package:sportapplication/screens_client/inner_screens/produits_details.dart';
 import 'package:sportapplication/screens_client/reli_cart_screen.dart';
 import 'package:sportapplication/screens_client/statistique/statistique.dart';
-import 'package:sportapplication/screens_salle/ajouter_salle/ajouterClient.dart';
 import 'package:sportapplication/screens_salle/home_salle2.dart';
 import 'package:sportapplication/screens_salle/loginResponsable.dart';
 import 'package:sportapplication/shared/colors.dart';
@@ -34,27 +32,34 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+    Color _appBarColor = Colors.transparent;
+
+   MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
+                    
+
       providers: [
         ChangeNotifierProvider(create: (context) => ProductProvider()),
-        ChangeNotifierProvider(create: (context) => MembersProvider()),
         //  ChangeNotifierProvider(create: (context) => EditProductScreen()),// Added MembersProvider
+      
+        
       ],
       child: MaterialApp(
         theme: ThemeData(
+
           colorScheme: ColorScheme.light().copyWith(
             primary: pink,
             background: Colors.white,
+            
           ),
         ),
         debugShowCheckedModeBanner: false,
@@ -80,11 +85,11 @@ class MyApp extends StatelessWidget {
           ProduitDetails.routeName: (context) => ProduitDetails(),
           FavoritePage.routeName: (context) => FavoritePage(),
           //'/edit_product': (context) => EditProductScreen(),
-          '/RegisterPage': (context) => ResponsableAjouterClient(),
           '/vendorsAuth': (context) => VendorAuthScreen(),
           '/derniee_arrivee':(context)=>LastArrivalWidget(),
           '/sportifCoach':(context)=>SportifCoteCoach(),
           '/statistique':(context)=>Statistique(),
+          NouveauProgramme.id:(context)=>NouveauProgramme(),
 
 
         },

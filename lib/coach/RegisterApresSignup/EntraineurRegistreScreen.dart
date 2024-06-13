@@ -176,8 +176,8 @@ _selectGalleryCVImage2() async {
                   decoration: BoxDecoration(
                     gradient: LinearGradient(
                       colors: [
-                        Colors.yellow.shade900,
-                        Colors.yellow,
+                        Colors.pink.shade300,
+                        Colors.white,
                       ],
                     ),
                   ),
@@ -229,7 +229,7 @@ _selectGalleryCVImage2() async {
                       },
                       keyboardType: TextInputType.name,
                       decoration: InputDecoration(
-                        labelText: 'Bussiness Name',
+                        labelText: 'Nom',
                       ),
                     ),
                     SizedBox(
@@ -241,14 +241,14 @@ _selectGalleryCVImage2() async {
                       },
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Please Email Address Must not be empty';
+                          return 'svp Email  ne peuve pas étre vide';
                         } else {
                           return null;
                         }
                       },
                       keyboardType: TextInputType.emailAddress,
                       decoration: InputDecoration(
-                        labelText: 'Email Address',
+                        labelText: 'Ton Email professionnel',
                       ),
                     ),
                     SizedBox(
@@ -260,16 +260,20 @@ _selectGalleryCVImage2() async {
                       },
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'Please Phone Number Must not be empty';
+                          return 'SVP enter votre numero';
                         } else {
                           return null;
                         }
                       },
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
-                        labelText: 'Phone Number',
+                        labelText: 'Numero telephone',
                       ),
                     ),
+                    SizedBox(height: 20,),
+                    SizedBox(
+                      height: 30,
+                      child: Text('Le cv')),
                     Container(
                           height: 90,
                           width: 90,
@@ -286,7 +290,11 @@ _selectGalleryCVImage2() async {
                                   _selectGalleryCVImage2();
                                   },
                                   icon: Icon(CupertinoIcons.photo)),
+                                  
                         ),
+                        SizedBox(
+                          height: 20,
+                          child: Text('carte nationalle')),
                         Container(
                           height: 90,
                           width: 90,
@@ -311,7 +319,7 @@ _selectGalleryCVImage2() async {
                           countryValue:
                           'Algeria';
                           setState(() {
-                            countryValue = 'a';
+                            countryValue = 'Algeria';
                           });
                         },
                         onStateChanged: (value) {
@@ -326,31 +334,10 @@ _selectGalleryCVImage2() async {
                         },
                       ),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.all(14.0),
-                      child: ElevatedButton(
-                          onPressed: () {
-                            // Add logic to take a photo of the CV
-                          },
-                          child: TextButton(
-                            onPressed: () {},
-                            child: Text('Entrer ton cv'),
-                          )),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(14.0),
-                      child: ElevatedButton(
-                          onPressed: () {
-                            // Add logic to take a photo of the CV
-                          },
-                          child: TextButton(
-                            onPressed: () {},
-                            child: Text('carte nationalle'),
-                          )),
-                    ),
-                    // Inside your _CoachRegistrationScreenState class
+                  
+                  
+                    
 
-// Inside your build method or wherever you want to place the TextFormField
 
                     Padding(
                       padding: const EdgeInsets.all(14.0),
@@ -361,8 +348,8 @@ _selectGalleryCVImage2() async {
                           });
                         },
                         decoration: InputDecoration(
-                          labelText: 'Locations Worked In',
-                          hintText: 'Enter locations separated by commas',
+                          labelText: 'Localisation',
+                          hintText: 'Entrer la localisation',
                         ),
                       ),
                     ),
@@ -375,7 +362,7 @@ _selectGalleryCVImage2() async {
                         height: 30,
                         width: MediaQuery.of(context).size.width - 40,
                         decoration: BoxDecoration(
-                          color: Colors.yellow.shade900,
+                          color: Colors.pink.shade300,
                           borderRadius: BorderRadius.circular(
                             10,
                           ),

@@ -15,7 +15,7 @@ class _ResponsableHomeState extends State<ResponsableHome> {
     int _pageIndex = 0;
 
  final List<Widget> _pages = [
-            ResponsableMessage(),
+            ResponsableMessage(userId: '', userType: '',),
             ResponsableFormul(),
             ResponsableProfile(),
   ];

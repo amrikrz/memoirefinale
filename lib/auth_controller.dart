@@ -53,11 +53,10 @@ class AuthController {
         });
       } else {
         res =
-            'les champs ne peuvent pas être vides'; // Provide an appropriate message for empty fields
+            'les champs ne peuvent pas être vides'; 
       }
     } catch (e) {
-      //  print(e);
-      //  res ='une erreur s\'est produite'; // Handle the error case and assign an appropriate message
+    
     }
     return res;
   }

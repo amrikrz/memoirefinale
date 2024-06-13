@@ -3,12 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class ClientProfile extends StatefulWidget {
+class ClientForm extends StatefulWidget {
   @override
   _FitnessFormState createState() => _FitnessFormState();
 }
 
-class _FitnessFormState extends State<ClientProfile> {
+class _FitnessFormState extends State<ClientForm> {
   final _formKey = GlobalKey<FormState>();
 
   String height = '';

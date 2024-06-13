@@ -78,6 +78,11 @@ dependencies:
   injectable: ^2.4.2
   connectivity_plus: ^6.0.3
   get_it: ^7.7.0
+  flutter_bloc: ^8.1.6
+  equatable: ^2.0.5
+  intl: ^0.19.0
+  timezone: ^0.9.3
+
 
 
 
@@ -133,7 +138,7 @@ flutter:
   - assets/images/banner1.jpg
   - assets/images/banner2.jpg
   - assets/images/ex1.jpg
-  - assets/videos/cat.mp4
+  - assets/videos/sport1.mp4
   - assets/icons/salade.png
   - assets/icons/riz.png
   - assets/icons/fruit.png
