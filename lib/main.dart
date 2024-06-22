@@ -3,6 +3,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:provider/provider.dart';
+import 'package:sportapplication/coach/controllers/add_exercice_provider.dart';
+import 'package:sportapplication/coach/controllers/add_plan_exercice_provider.dart';
+import 'package:sportapplication/coach/controllers/add_plan_provider.dart';
+import 'package:sportapplication/coach/controllers/add_plan_reccette_provider.dart';
+import 'package:sportapplication/coach/controllers/add_reccette_provider.dart';
+import 'package:sportapplication/coach/screens_coach/edit/edit_things_screen.dart';
+import 'package:sportapplication/coach/screens_coach/login_coach_screen.dart';
+import 'package:sportapplication/coach/vendeur/vendeur_auth_screen.dart';
 import 'package:sportapplication/coach/RegisterApresSignup/EntraineurRegistreScreen.dart';
 import 'package:sportapplication/coach/screens_coach/creerProgramme/ajouterNouveauProgramme.dart';
 import 'package:sportapplication/coach/vendeur/vendeur_auth_screen.dart';
@@ -22,6 +30,7 @@ import 'package:sportapplication/screens_client/homePage/dernieeArrivee/entrainn
 import 'package:sportapplication/screens_client/home_client2.dart';
 import 'package:sportapplication/screens_client/inner_screens/favorite_page.dart';
 import 'package:sportapplication/screens_client/inner_screens/produits_details.dart';
+import 'package:sportapplication/screens_client/notification_screen.dart';
 import 'package:sportapplication/screens_client/reli_cart_screen.dart';
 import 'package:sportapplication/screens_client/statistique/statistique.dart';
 import 'package:sportapplication/screens_salle/home_salle2.dart';
@@ -49,6 +58,13 @@ class MyApp extends StatelessWidget {
 
       providers: [
         ChangeNotifierProvider(create: (context) => ProductProvider()),
+
+        ChangeNotifierProvider(create: (context) => MembersProvider()),
+        ChangeNotifierProvider(create: (context) => AddReccetteProvider()),
+        ChangeNotifierProvider(create: (context) => AddPlanReccetteProvider()),
+        ChangeNotifierProvider(create: (context) => AddPlanExerciceProvider()),
+        ChangeNotifierProvider(create: (context) => AddPlanProvider()),
+        ChangeNotifierProvider(create: (context) => AddExerciceProvider()),
         //  ChangeNotifierProvider(create: (context) => EditProductScreen()),// Added MembersProvider
       
         
@@ -81,11 +97,17 @@ class MyApp extends StatelessWidget {
           '/role_selection': (context) => RoleSelection(),
           '/home_client_2': (context) => SportifHome2(),
           '/cart_buy': (context) => EmptyCartWidget(onButtonPressed: () {}),
+          '/notification': (context) => NotificationScreen(),
           '/cartpage': (context) => CartPage(),
           ProduitDetails.routeName: (context) => ProduitDetails(),
           FavoritePage.routeName: (context) => FavoritePage(),
           //'/edit_product': (context) => EditProductScreen(),
+
           '/vendorsAuth': (context) => VendorAuthScreen(),
+
+         // '/RegisterPage': (context) => ResponsableAjouterClient(),
+          '/vendorsAuth': (context) => LoginCoachScreen(),
+
           '/derniee_arrivee':(context)=>LastArrivalWidget(),
           '/sportifCoach':(context)=>SportifCoteCoach(),
           '/statistique':(context)=>Statistique(),

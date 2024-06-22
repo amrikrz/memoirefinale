@@ -1,152 +1,54 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sportapplication/coach/models/plan_model.dart';
+import 'package:sportapplication/projects/get_plan_coach_buy.dart';
 import 'package:sportapplication/screens_client/alimentation/recipe_details.dart';
 import 'package:sportapplication/screens_client/alimentation/recipes_item.dart';
+import 'package:sportapplication/screens_client/programe_item.dart';
 import 'package:sportapplication/shared/colors.dart';
 
+import '../checkout_screen.dart';
+
 class ClientAliment extends StatefulWidget {
+  const ClientAliment({Key? key}) : super(key: key);
+
   @override
-  _ClientAlimentScreenState createState() => _ClientAlimentScreenState();
+  State<ClientAliment> createState() => _ClientAlimentState();
 }
 
-class _ClientAlimentScreenState extends State<ClientAliment> {
+class _ClientAlimentState extends State<ClientAliment> {
+
+  GetPlanCoachBuy getPlanCoachBuy = GetPlanCoachBuy();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        padding: EdgeInsets.only(
-          top: MediaQuery.of(context).padding.top + 24,
-          bottom: MediaQuery.of(context).padding.bottom + 24,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 24,
-              ),
-              child: Text(
-                'Nutrition,',
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge
-                    ?.copyWith(color: Colors.pink.shade600),
-              ),
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 24,
-              ),
-              child: Text(
-                'Recettes d\'aliments sains et nutritifs',
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(16),
-              padding: EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: Colors.grey.shade50,
-                borderRadius: BorderRadius.circular(16),
-              ),
-              child: Row(
-                children: [
-                  Icon(Icons.search),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Expanded(
-                    child: Text(
-                      'Chercher une recette',
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 24,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Recettes Tendance',
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            SizedBox(
-              height: 280,
-              child: ListView.separated(
-                itemCount: trandingRecipes.length,
-                scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 24,
-                ),
-                separatorBuilder: (_, __) {
-                  return SizedBox(
-                    width: 16,
-                  );
-                },
-                itemBuilder: (context, index) {
-                  final recipe = trandingRecipes[index];
-                  return RecipesItem(recipe: recipe);
-                },
-              ),
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: 24,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    'Dernières recettes',
-                    style: Theme.of(context).textTheme.titleMedium,
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(
-              height: 8,
-            ),
-            SizedBox(
-              height: 280,
-              child: ListView.separated(
-                itemCount: lastestRecipes.length,
-                scrollDirection: Axis.horizontal,
-                padding: EdgeInsets.symmetric(
-                  horizontal: 24,
-                ),
-                separatorBuilder: (_, __) {
-                  return SizedBox(
-                    width: 16,
-                  );
-                },
-                itemBuilder: (context, index) {
-                  final recipe = lastestRecipes[index];
-                  return RecipesItem(recipe: recipe);
-                },
-              ),
-            ),
-          ],
-        ),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        actions: [
+          IconButton(onPressed: (){
+            Navigator.of(context).push(CupertinoPageRoute(builder: (context)=>CheckoutScreen()));
+          }, icon: Icon(Icons.shopping_cart_outlined,color: Colors.pinkAccent,))
+        ],
+        title: Text("Plan Entrainment",style: TextStyle(color: Colors.pinkAccent,fontWeight: FontWeight.w500)),),
+      body: FutureBuilder<List<PlanCoach2UserModel>>(
+        future: getPlanCoachBuy.getData(),
+        builder: (BuildContext context, AsyncSnapshot<List<PlanCoach2UserModel>> snapshot) {
+          if(snapshot.connectionState == ConnectionState.done){
+            return snapshot.data?.isEmpty??true?Center(child: Text("Aucun Plan"),):
+                ListView.builder(
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context,position)=>ProgrameItem(plan: snapshot.data![position]
+                    ));
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
+
+
       ),
     );
   }
 }
+

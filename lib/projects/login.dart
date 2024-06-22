@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
 import 'package:sportapplication/auth_controller.dart';
 import 'package:sportapplication/projects/forgat_pass_word1.dart';
@@ -34,9 +36,16 @@ class _LoginPageState extends State<LoginPage> {
       password =
           passwordController.text;
       String res = await _authController.loginUsers(
-          email, password); 
+          email, password);
+
+      // Pass email and password to loginUsers
 
       if (res == 'succès') {
+
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('userId', FirebaseAuth.instance.currentUser!.uid);
+        await prefs.setString('role', "user");
+
         return Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (BuildContext context) {
           return ClientHome();
@@ -63,12 +72,6 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         elevation: 0,
         toolbarHeight: 100,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () {
-            Navigator.pushNamed(context, '/image3');
-          },
-        ),
         backgroundColor: Colors.transparent,
       ),
       body: SingleChildScrollView(

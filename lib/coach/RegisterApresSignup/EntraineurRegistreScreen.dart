@@ -166,6 +166,9 @@ _selectGalleryCVImage2() async {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Registre Coach"),
+      ),
       body: CustomScrollView(
         slivers: [
           SliverAppBar(
@@ -355,11 +358,12 @@ _selectGalleryCVImage2() async {
                     ),
 
                     InkWell(
-                      onTap: () {
-                        _saveCoachDetails();
+                      onTap: () async{
+                        await _saveCoachDetails();
+                        Navigator.pop(context);
                       },
                       child: Container(
-                        height: 30,
+                        height: 50,
                         width: MediaQuery.of(context).size.width - 40,
                         decoration: BoxDecoration(
                           color: Colors.pink.shade300,

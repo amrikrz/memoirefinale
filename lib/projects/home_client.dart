@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sportapplication/screens_client/alimentation/alimentation_client.dart';
 import 'package:sportapplication/screens_client/exercice_client.dart';
 import 'package:sportapplication/screens_client/home_client2.dart';
+import 'package:sportapplication/screens_client/profile_cclient.dart';
 import 'package:sportapplication/screens_client/profile_client.dart';
 import 'package:sportapplication/screens_client/statistique/statistique.dart';
 
@@ -22,8 +23,8 @@ class _MobileState extends State<ClientHome> {
             ClientExercice(),
             ClientAliment(),
             Statistique(),
-            
-            ClientProfile(),
+
+            ProfileCclient(),
   ];
   final PageController pageController = PageController();
   @override
@@ -48,7 +49,7 @@ class _MobileState extends State<ClientHome> {
           BottomNavigationBarItem(icon: Icon(Icons.home_filled), label: "Home",),
           BottomNavigationBarItem(
               icon: Icon(Icons.fitness_center_outlined), label: "Exercices"),
-          BottomNavigationBarItem(icon: Icon(Icons.local_dining_outlined), label: "Nutrition"),
+          BottomNavigationBarItem(icon: Icon(Icons.space_dashboard), label: "Plans"),
           BottomNavigationBarItem(icon: Icon(Icons.stacked_bar_chart), label: "Statistique"),
           BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined,),label: "Profile"),
         ],

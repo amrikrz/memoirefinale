@@ -1,17 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sportapplication/screens_client/cart/cart_shop.dart';
 import 'package:sportapplication/screens_client/empty_cart_buy.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: CartPage(),
-    );
-  }
-}
 
 class CartPage extends StatefulWidget {
   @override
@@ -37,12 +28,14 @@ class _CartPageState extends State<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       
-      body: Center(
-        child: isCartEmpty
-          ? EmptyCartWidget(
-              onButtonPressed: addItemToCart,
-            )
-          : ShopCartWidget(),
+      body: DefaultTabController(
+        length: 2,
+        child: Column(
+          children: [
+
+          ],
+        ),
+
       ),
     );
   }

@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -22,24 +23,21 @@ class AuthController2 {
     return downloadUrl;
   }
 
-  Future<String> signupUsers2(String nom, String telephone, String DateNais,
-      String email, String motpasse, Uint8List? image, String gendre) async {
+  Future<String> signupUsers2(String nom, String telephone,
+      String email, String motpasse, Uint8List? image,String location) async {
     String res = 'succes';
 
     try {
       if (nom.isNotEmpty &&
           telephone.isNotEmpty &&
-          DateNais.isNotEmpty && // Check if DateNais is not empty
           email.isNotEmpty && // Check if email is not empty
           motpasse.isNotEmpty &&
-          gendre.isNotEmpty && // Check if password is not empty
+          location.isNotEmpty&&
           image != null) {
         // Create a user
-        UserCredential cred = await _auth.createUserWithEmailAndPassword(
-            email: email, password: motpasse);
+        UserCredential cred = await _auth.createUserWithEmailAndPassword(email: email, password: motpasse);
 
-        String profileImageUrl =
-            await _uploadProfileImageToStorage2(image);
+        String profileImageUrl = await _uploadProfileImageToStorage2(image);
         //res = 'succès';
 
         await _firestore.collection('Responsables').doc(cred.user!.uid).set({
@@ -47,17 +45,15 @@ class AuthController2 {
           'fullname': nom,
           'phoneNumber': telephone,
           'acheyeurId': cred.user!.uid,
-          "dateNais": '',
           'profileImage': profileImageUrl,
-          'gendre': gendre,
+          "location":location
         });
       } else {
-        res =
-            'les champs ne peuvent pas être vides'; // Provide an appropriate message for empty fields
+        res = 'les champs ne peuvent pas être vides'; // Provide an appropriate message for empty fields
       }
     } catch (e) {
-      //  print(e);
-      //  res ='une erreur s\'est produite'; // Handle the error case and assign an appropriate message
+        debugPrint("error : $e");
+        res ='une erreur s\'est produite'; // Handle the error case and assign an appropriate message
     }
     return res;
   }
@@ -69,7 +65,9 @@ class AuthController2 {
       if (email.isNotEmpty && password.isNotEmpty) {
         await _auth.signInWithEmailAndPassword(
             email: email, password: password);
-
+        SharedPreferences prefs = await SharedPreferences.getInstance();
+        await prefs.setString('userId', FirebaseAuth.instance.currentUser!.uid);
+        await prefs.setString('role', "coach");
         res = 'succès';
       } else {
         res = 'les champs ne peuvent pas être vides';

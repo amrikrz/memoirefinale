@@ -31,6 +31,7 @@ class AuthWrapper extends StatelessWidget {
 
   Widget getHomePage(User user) {
     String role = 'client';
+
     
     switch (role) {
       case 'client':

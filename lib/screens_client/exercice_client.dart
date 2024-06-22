@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sportapplication/screens_client/exercice/exercice_SearchScreen.dart';
 import 'package:sportapplication/screens_client/coach_partie_client/tab2.dart';
 import 'package:sportapplication/screens_client/Responsable_partie_sportif/tab3.dart';
+import 'package:sportapplication/screens_client/plan_buyed.dart';
 
 class ClientExercice extends StatefulWidget {
   // ignore: use_super_parameters
@@ -17,7 +18,7 @@ class _ClientExerciceState extends State<ClientExercice> {
   
     // ignore: prefer_const_constructors
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(automaticallyImplyLeading: false,
         actions:<Widget> [
@@ -27,13 +28,18 @@ class _ClientExerciceState extends State<ClientExercice> {
         body: Column(
           children: [
             TabBar(
-                            indicatorColor: Colors.red,
-
+              indicatorColor: Colors.pinkAccent,
+              indicatorSize: TabBarIndicatorSize.tab,
+              indicatorPadding: EdgeInsets.symmetric(horizontal: 15),
               labelColor: Colors.black,
+              dividerHeight: 0,
               unselectedLabelColor: Colors.black.withOpacity(0.5),
               tabs: [
                 Tab(
-                  text: "EXERCICES",
+                  text: "Exercices",
+                ),
+                Tab(
+                  text: "Plans",
                 ),
                 Tab(
                   text: "COACHES",
@@ -51,6 +57,8 @@ class _ClientExerciceState extends State<ClientExercice> {
                   SearchScreen(),
 
                   //tab2
+                  PlanBuyed(),
+
                   SportifCoteCoach(),
 
                   //tab3

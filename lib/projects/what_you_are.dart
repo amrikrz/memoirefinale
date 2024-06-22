@@ -15,12 +15,6 @@ class ChoisirWhatYouAre extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           toolbarHeight: 100,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () {
-              Navigator.pushNamed(context, '/what_you_are');
-            },
-          ),
           backgroundColor: Colors.transparent,
         ),
         body: Padding(

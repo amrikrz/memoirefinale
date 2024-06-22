@@ -36,11 +36,14 @@ class LandingScreen extends StatelessWidget {
 
             if (coachUserModel.approved! == false) {
               WidgetsBinding.instance?.addPostFrameCallback((_) {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
-                    builder: (context) => MainCoachScreen(),
-                  ),
+                Navigator.pushAndRemoveUntil(
+                  context,
+                    MaterialPageRoute(
+                      builder: (context) => MainCoachScreen(),
+                    ),
+                      (route) => false,
                 );
+
               });
               return SizedBox.shrink();
             }

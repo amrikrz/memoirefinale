@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sportapplication/screens_salle/ajouter_Salle.dart';
+import 'package:sportapplication/screens_salle/demandes_screen.dart';
 import 'package:sportapplication/screens_salle/message2.dart';
 import 'package:sportapplication/screens_salle/profile_salle.dart';
 
@@ -15,17 +16,15 @@ class _ResponsableHomeState extends State<ResponsableHome> {
     int _pageIndex = 0;
 
  final List<Widget> _pages = [
-            ResponsableMessage(userId: '', userType: '',),
+            Message2(),
             ResponsableFormul(),
+            DemandesScreen(),
             ResponsableProfile(),
   ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      
-        
-        
 
         bottomNavigationBar: BottomNavigationBar(
         currentIndex: _pageIndex,
@@ -39,8 +38,9 @@ class _ResponsableHomeState extends State<ResponsableHome> {
         selectedItemColor: Colors.pink,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.message), label: "Message",),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.add_box_outlined), label: "Ajouter"),
+              BottomNavigationBarItem(
+              icon: Icon(Icons.group), label: "Partcipent"), BottomNavigationBarItem(
+              icon: Icon(Icons.person_add_rounded), label: "Demandes"),
       
           BottomNavigationBarItem(icon: Icon(Icons.account_circle_outlined,),label: "Profile"),
         ],

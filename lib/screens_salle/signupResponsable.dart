@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:intl/intl.dart';
 import 'package:sportapplication/screens_salle/auth_controller_responsable.dart';
 import 'package:sportapplication/screens_salle/loginResponsable.dart';
 import 'package:sportapplication/shared/colors.dart';
@@ -25,38 +24,15 @@ class _ResponsableRegisterScreenState extends State<ResponsableRegisterScreen> {
   final AuthController2 _authController = AuthController2();
 
   final TextEditingController nam = TextEditingController();
-  final TextEditingController prenom = TextEditingController();
   final TextEditingController mobile = TextEditingController();
-  final TextEditingController date_nais = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final TextEditingController location_controller = TextEditingController();
 
   bool _isObscure = true;
   Uint8List? _image;
 
-  String? _validateDate(String? value) {
-    if (value == null || value.isEmpty) {
-      return "Date cannot be empty";
-    }
-    List<String> parts = value.split('/');
-    if (parts.length != 3) {
-      return "Invalid date format";
-    }
-    int day = int.tryParse(parts[0]) ?? 0;
-    int month = int.tryParse(parts[1]) ?? 0;
-    int year = int.tryParse(parts[2]) ?? 0;
-    if (day < 1 ||
-        day > 31 ||
-        month < 1 ||
-        month > 12 ||
-        year < 1900 ||
-        year > DateTime.now().year - 18) {
-      return "Invalid date";
-    }
-    return null;
-  }
 
-  var _currentItemSelected2 = "Homme";
   var rool2 = "Homme";
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -68,9 +44,10 @@ class _ResponsableRegisterScreenState extends State<ResponsableRegisterScreen> {
       _isLoading = true;
     });
     if (_formKey.currentState!.validate()) {
+      debugPrint("i'm here");
       await _authController
           .signupUsers2(
-              nom, telephone, DateNais, email, password, _image, Gendre)
+              nam.text, mobile.text, email, passwordController.text, _image,location_controller.text)
           .then((value) {
         setState(() {
           _isLoading = false;
@@ -152,23 +129,17 @@ class _ResponsableRegisterScreenState extends State<ResponsableRegisterScreen> {
                                       backgroundColor: pink,
                                       backgroundImage: MemoryImage(_image!),
                                     )
-                                  : CircleAvatar(
-                                      radius: 64,
-                                      backgroundColor: pink,
-                                      backgroundImage: NetworkImage(
-                                          'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg'),
-                                    ),
-                              Positioned(
-                                right: 0,
-                                top: 5,
-                                child: IconButton(
-                                  onPressed: () {
-                                    selectGalleryImage();
-                                  },
-                                  icon: Center(child: Icon(Icons.image)),
-                                  color: Colors.black87,
-                                ),
-                              ),
+                                  : GestureDetector(
+                                    onTap:(){
+                                      selectGalleryImage();
+                                    },
+                                    child: CircleAvatar(
+                                        radius: 64,
+                                        backgroundColor: pink,
+                                        backgroundImage: NetworkImage(
+                                            'https://t4.ftcdn.net/jpg/00/64/67/63/360_F_64676383_LdbmhiNM6Ypzb3FM4PPuFP9rHe7ri8Ju.jpg'),
+                                      ),
+                                  ),
                             ],
                           ),
                           Container(
@@ -180,7 +151,7 @@ class _ResponsableRegisterScreenState extends State<ResponsableRegisterScreen> {
                               decoration: InputDecoration(
                                 filled: true,
                                 fillColor: Colors.white,
-                                hintText: 'Nom et Prenom',
+                                hintText: 'Nom du Salle',
                                 enabled: true,
                                 contentPadding: const EdgeInsets.only(
                                     left: 14.0, bottom: 8.0, top: 8.0),
@@ -213,34 +184,12 @@ class _ResponsableRegisterScreenState extends State<ResponsableRegisterScreen> {
                             width: 334,
                             height: 60,
                             child: TextFormField(
-                              controller: date_nais,
-                              decoration: InputDecoration(
-                                labelText: "Date de naissance",
-                                filled: true,
-                                prefixIcon: Icon(Icons.calendar_today),
-                                enabledBorder: OutlineInputBorder(
-                                  borderSide: BorderSide.none,
-                                ),
-                                focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: pink)),
-                              ),
-                              readOnly: true,
-                              validator: _validateDate,
-                              onTap: () {
-                                _selectData();
-                              },
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.symmetric(vertical: 10),
-                            width: 334,
-                            height: 60,
-                            child: TextFormField(
-                              controller: prenom,
+                              controller: mobile,
+                              keyboardType: TextInputType.number,
                               decoration: InputDecoration(
                                 filled: true,
-                                fillColor: Colors.white,
-                                hintText: '+213(0*********)',
+                                 fillColor: Colors.white,
+                                hintText: 'Numero du Salle',
                                 enabled: true,
                                 contentPadding: const EdgeInsets.only(
                                     left: 14.0, bottom: 8.0, top: 8.0),
@@ -254,17 +203,51 @@ class _ResponsableRegisterScreenState extends State<ResponsableRegisterScreen> {
                                 ),
                               ),
                               validator: (value) {
-                                if (value!.isEmpty ) {
-                                  return "Numero ne peut pas être vide";
+                                if (value!.isEmpty) {
+                                  return "Nom ne peut pas être vide";
                                 }
-                                if (!RegExp("^[0-9]").hasMatch(value)) {
-                                  return "Veuillez entrer un telephone valide";
+                                else {
+                                  return null;
+                                }
+                              },
+                              onChanged: (value) {
+                              },
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.symmetric(vertical: 10),
+                            width: 334,
+                            height: 60,
+                            child: TextFormField(
+                              controller: location_controller,
+                              decoration: InputDecoration(
+                                filled: true,
+                                fillColor: Colors.white,
+                                hintText: 'Location du Salle',
+                                enabled: true,
+                                contentPadding: const EdgeInsets.only(
+                                    left: 14.0, bottom: 8.0, top: 8.0),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.white),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return "Location ne peut pas être vide";
+                                }
+                                if (!RegExp("^[a-zA-Z]").hasMatch(value)) {
+                                  return "Veuillez entrer un nom valide";
                                 } else {
                                   return null;
                                 }
                               },
                               onChanged: (value) {
-                                telephone = value;
+                                nom = value;
                               },
                             ),
                           ),
@@ -358,42 +341,6 @@ class _ResponsableRegisterScreenState extends State<ResponsableRegisterScreen> {
                               },
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Gender',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                                Flexible(
-                                  child: Container(
-                                    width: 100,
-                                    child: DropdownButtonFormField(
-                                      hint: Text('Select'),
-                                      value: _currentItemSelected2,
-                                      items: ['Homme', 'Femme']
-                                          .map<DropdownMenuItem<String>>(
-                                              (String value) {
-                                        return DropdownMenuItem<String>(
-                                            value: value, child: Text(value));
-                                      }).toList(),
-                                      onChanged: (String? newValue) {
-                                        setState(() {
-                                          _currentItemSelected2 = newValue!;
-                                          Gendre = newValue;
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
                           SizedBox(
                             height: 10,
                           ),
@@ -469,22 +416,4 @@ class _ResponsableRegisterScreenState extends State<ResponsableRegisterScreen> {
     );
   }
 
-  Future<void> _selectData() async {
-    DateTime now = DateTime.now();
-    DateTime lastDate = DateTime(now.year - 18, now.month, now.day);
-
-    DateTime? _picked = await showDatePicker(
-      context: context,
-      initialDate: lastDate,
-      firstDate: DateTime(1940),
-      lastDate: lastDate,
-    );
-
-    if (_picked != null) {
-      setState(() {
-        DateNais = DateFormat('dd/MM/yyyy').format(_picked);
-        date_nais.text = DateNais;
-      });
-    }
-  }
 }

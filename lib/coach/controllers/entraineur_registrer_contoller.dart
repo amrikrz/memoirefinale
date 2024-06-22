@@ -58,7 +58,6 @@ class CoachController {
         'countryValue': countryValue,
         'stateValue': stateValue,
         'cityValue': cityValue,
-        
         'cv': storeCV,
         'carteNationale': storeCarteNationale,
         'storeImage': storeImage,

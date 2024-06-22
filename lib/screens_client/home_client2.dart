@@ -145,7 +145,7 @@ class SportifHome2 extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {
-                      Navigator.pushReplacementNamed(context, '/cart_buy');
+                      Navigator.pushNamed(context, '/notification');
                     },
                     icon: Icon(
                       Icons.notifications,

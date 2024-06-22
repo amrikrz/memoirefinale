@@ -10,19 +10,21 @@ class ResponsableFormul extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 2,
       child: Scaffold(
         appBar: AppBar(automaticallyImplyLeading: false,
         title: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Text("Ajouter"),
+          child: Text("List Participent"),
         ),
         ),
         body: Column(
           children: [
             TabBar(
-              indicatorColor: Colors.red,
- indicator: UnderlineTabIndicator(
+              dividerHeight: 0,
+              indicatorColor: Colors.red,indicatorSize: TabBarIndicatorSize.tab,
+              indicatorPadding: EdgeInsets.symmetric(horizontal: 10),
+                indicator: UnderlineTabIndicator(
                 borderSide: BorderSide(color: Colors.red, width: 4.0),
                 insets: EdgeInsets.symmetric(horizontal: 16.0),
               ),
@@ -36,23 +38,20 @@ class ResponsableFormul extends StatelessWidget {
                 Tab(
                   text: "Entraineurs",
                 ),
-                Tab(
-                  text: "Équipement",
-                  
-                ),
+
               
             ]),
              Expanded(
               child: TabBarView(
                 children: [
                   //tab 1
-                  EditProductScreen(),
+                  ResponsableAjouterEquipement(),
 
                   //tab2
                   ResponsableAjouterEntraineur(),
 
                   //tab3
-                  ResponsableAjouterEquipement(),
+                 // ResponsableAjouterEquipement(),
                 ],
               ),
             ),

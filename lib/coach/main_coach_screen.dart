@@ -5,6 +5,10 @@ import 'package:sportapplication/coach/message/message.dart';
 
 import 'package:sportapplication/coach/screens_coach/creerProgramme/creerProgramme1.dart';
 import 'package:sportapplication/coach/screens_coach/earning_screen.dart';
+
+import 'package:sportapplication/coach/screens_coach/edit/edit_things_screen.dart';
+import 'package:sportapplication/coach/screens_coach/edit/plan_entrainment.dart';
+import 'package:sportapplication/coach/screens_coach/message.dart';
 import 'package:sportapplication/coach/screens_coach/orders_screen.dart';
 import 'package:sportapplication/coach/screens_coach/profile_couch.dart';
 import 'package:sportapplication/projects/what_you_are.dart';
@@ -22,9 +26,10 @@ class _MainCoachScreenState extends State<MainCoachScreen> {
 
   List<Widget> _pages = [
     MessageScreen(userId: '', userType: '',),
+    MessageCoachScreen(),
     EarningScreen(),
-  
-    EditProductScreen(),
+
+    PlanEntrainment(),
     OrderScreen(),
     ProfileCoachScreen(),
   ];
@@ -119,15 +124,15 @@ class _MainCoachScreenState extends State<MainCoachScreen> {
         },
         type: BottomNavigationBarType.fixed,
         unselectedItemColor: Colors.black,
-        selectedItemColor: Colors.pink,
+        selectedItemColor: Colors.pinkAccent,
         items: [
-          BottomNavigationBarItem(icon: Icon(Icons.message), label: 'SMS'),
+          BottomNavigationBarItem(icon: Icon(Icons.messenger), label: 'Messages'),
           BottomNavigationBarItem(
               icon: Icon(CupertinoIcons.calendar), label: 'Organize'),
           
-          BottomNavigationBarItem(icon: Icon(Icons.edit), label: 'EDIT'),
+          BottomNavigationBarItem(icon: Icon(Icons.my_library_add_sharp), label: 'Programes'),
           BottomNavigationBarItem(
-              icon: Icon(CupertinoIcons.shopping_cart), label: 'ORDERS'),
+              icon: Icon(Icons.shopping_basket), label: 'ORDERS'),
           BottomNavigationBarItem(icon: Icon(Icons.perm_identity_rounded), label: 'PROFILE'),
         ],
       ),

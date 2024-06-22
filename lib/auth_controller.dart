@@ -81,11 +81,15 @@ class AuthController {
   Future<void> saveUserLoginState(String userId) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('userId', userId);
+    await prefs.setString('role', "user");
   }
 
-  Future<String?> getUserLoginState() async {
+  Future<List<String>?> getUserLoginState() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getString('userId');
+    String? id =  await prefs.getString('userId');
+    String? role =  await prefs.getString('role');
+
+    return id==null ?[]:[id,role!];
   }
 
   pickProfileImage(ImageSource source) async {

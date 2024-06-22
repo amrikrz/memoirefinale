@@ -1,5 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import 'what_you_are.dart';
 
 class ImagesThree extends StatelessWidget {
   const ImagesThree({super.key});
@@ -79,7 +82,7 @@ class ImagesThree extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(vertical: 50),
                 child: ElevatedButton(
                   onPressed: () {
-                            Navigator.pushReplacementNamed(context,'/what_you_are');
+                            Navigator.pushAndRemoveUntil(context,CupertinoPageRoute(builder: (context)=>ChoisirWhatYouAre()),(route)=>false);
 
                   },
                   style: ButtonStyle(
